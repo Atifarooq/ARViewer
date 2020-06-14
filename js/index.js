@@ -1,5 +1,5 @@
 import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
-import controlColorPicker from "js/colorpicker.js";
+import controlColorPicker from "../js/colorpicker.js";
 
 let ObjectList = [];
 let viewerApi;
