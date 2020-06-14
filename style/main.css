@@ -1,3 +1,9 @@
+html,
+body {
+    font-family: "Raleway", sans-serif;
+    overflow: hidden;
+}
+
 .wrapper {
     display: flex;
 }
@@ -26,6 +32,34 @@
     position: absolute;
 }
 
+.position-relative {
+    position: relative;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .wrap {
     z-index: 999;
 }
@@ -36,8 +70,8 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .custom-shape-divider-bottom {
@@ -63,18 +97,20 @@
     fill: #ffffff;
 }
 
+.mb-35 {
+    margin-bottom: 35px;
+}
 
 @keyframes stretch {
     0% {
-      width: calc(180% + 1.3px);
-      height: 235px;
+        width: calc(180% + 1.3px);
+        height: 235px;
     }
     100% {
         width: calc(280% + 1.3px);
         height: 235px;
     }
-  }
-  
+}
 
 @media (min-width: 1200px) {
     .container,
@@ -126,4 +162,179 @@
     .container {
         max-width: 540px;
     }
+}
+
+/* .object-panel-wrapper {
+    margin: 10px 0;
+    padding: 20px;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+} */
+#control-head-title {
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+}
+
+#object-list {
+    list-style: none;
+    column-count: 2;
+    margin: 0;
+}
+
+.custom-control-label {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px 5px 0 5px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+/**/
+
+.range-wrapper {
+    margin: 10px 0;
+    padding: 20px 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.range {
+    margin-bottom: 5px;
+}
+
+.range > label {
+    display: block;
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px 5px 0 5px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    cursor: pointer !important;
+    box-shadow: 0px 0px 3px inset rgba(0, 0, 0, 0.25);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgb(238, 227, 227);
+    background: rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 3;
+    border-radius: 100px;
+    cursor: pointer !important;
+    box-shadow: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+input[type="range"]::-webkit-slider-thumb:after {
+    content: " ";
+    width: 160px;
+    height: 10px;
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    top: 5px;
+    background: #ff5b32;
+    background: linear-gradient(to right, #f088fc 1%, #ac6cff 70%);
+}
+
+.controlColorPicker {
+    padding-top: 20px;
+}
+/**/
+
+.chkwrap {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.chkwrap input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 0px 5px inset rgba(0, 0, 0, 0.15);
+    border-radius: 100%;
+}
+
+/* On mouse-over, add a grey background color 
+  .chkwrap:hover input ~ .checkmark {
+    background-color: #ccc;
+  }*/
+
+/* When the checkbox is checked, add a blue background 
+  .chkwrap input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }*/
+
+.chkwrap:hover input ~ .checkmark:after {
+    /* display: block; */
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.chkwrap input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.chkwrap .checkmark:after {
+    left: 6px;
+    top: 4px;
+    width: 3px;
+    height: 5px;
+    border: solid rgba(255, 255, 255, 0.8);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/**/
+.control-checklist {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    margin-bottom: 5px;
+}
+
+a.control-object-action {
+    text-transform: capitalize;
+    font-size: 12px;
+    padding: 2px 5px 0 5px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }

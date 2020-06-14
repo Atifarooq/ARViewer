@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/main.css">
     <title>Vectary Viewer</title>
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
     <script type="module" src="https://www.vectary.com/viewer/v1/scripts/vctr-viewer.js"></script>
 </head>
@@ -29,24 +32,62 @@
     </div>
 
     <div class="container">
-        <div class="row py-5">
-            <div class="wrap position-absolute">
-                <div class="colorPicker"></div>
+        <div class="row py-5 position-relative">
 
-                <div class="control-panel">
+            <div class="wrap position-absolute left top">
+                <section class="animate__animated animate__backInDown mb-35">
+                    <div class="colorPicker"></div>
+                </section>
+                <section class="control-panel animate__animated animate__backInDown" style="display: none;">
+                    <div class="range-wrapper mb-35">
+                        <div class="range rangeM">
+                            <label for="roughness">roughness</label>
+                            <input type="range" id="roughness" name="roughness" min="0" max="1" step="0.1"
+                                class="focused" value="0">
+                        </div>
+                        <div class="range rangeM">
+                            <label for="emissiveIntensity">emissive Intensity</label>
+                            <input type="range" id="emissiveIntensity" name="emissiveIntensity" step="0.1"
+                                class="focused" min="0" max="1" value="0">
+                        </div>
+                        <div class="range rangeM">
+                            <label for="metalness">metalness</label>
+                            <input type="range" id="metalness" name="metalness" min="0" max="1" step="0.1"
+                                class="focused" value="0">
+                        </div>
+                        <div class="range rangeM">
+                            <label for="opacity">opacity</label>
+                            <input type="range" id="opacity" name="opacity" min="0" max="1" step="0.1" class="focused"
+                                value="0">
+                        </div>
+                    </div>
 
-                </div>
+
+                    <div class="controlColorPicker"></div>
+                </section>
             </div>
-            <vctr-viewer id="a0521cdb-f85d-410e-8222-bac55f22475c" model="a0521cdb-f85d-410e-8222-bac55f22475c"
-                enableApi="1" autoplay="1" turntable="0.5">
-            </vctr-viewer>
 
+            <div class="text-center">
+
+                <label id="control-head-title"></label>
+                <vctr-viewer id="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c" model="d6c1f27d-6a27-4c7e-bd7d-bd19d7faa56c"
+                    enableApi="1">
+                </vctr-viewer>
+
+            </div>
+
+            <div class="wrap position-absolute right top animate__animated animate__backInDown">
+                <section class="object-panel-wrapper">
+                    <ul id="object-list" class="p-0 animate__animated animate__backInDown">
+                    </ul>
+                </section>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
-    <script src="js/colorpicker.js"></script>
-    <script src="js/index.js"></script>
+    <script type="module" src="js/index.js"></script>
+
 </body>
 
 </html>
