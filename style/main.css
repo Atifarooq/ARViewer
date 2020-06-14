@@ -172,6 +172,31 @@ body {
     }
 }
 
+.body-color-wrap {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.2+1,0+100 */
+    background: -moz-linear-gradient(
+        left,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 1%,
+        rgba(255, 255, 255, 0) 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+        left,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 1%,
+        rgba(255, 255, 255, 0) 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 1%,
+        rgba(255, 255, 255, 0) 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+
+    padding: 15px;
+    border-radius: 5px;
+}
 /* .object-panel-wrapper {
     margin: 10px 0;
     padding: 20px;
@@ -185,8 +210,12 @@ body {
 }
 
 #object-list {
-    column-count: 2;
+    column-count: 1;
     margin: 0;
+}
+
+.list {
+    column-count: 2 !important;
 }
 
 .custom-control-label {
@@ -354,7 +383,7 @@ input[type="range"]::-webkit-slider-thumb:after {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
 
-.control-object-action:hover{
+.control-object-action:hover {
     font-weight: 600;
 }
 
