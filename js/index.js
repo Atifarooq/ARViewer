@@ -112,27 +112,28 @@ function buildObjectList(ObjectList) {
         const element = ObjectList[index];
 
         var wrap = document.createElement("li");
-        
+
         var wrapDiv = document.createElement("div");
         wrapDiv.classList = 'control-checklist';
-        
+
         var chkLabel = document.createElement("label");
         chkLabel.classList = 'chkwrap';
-        
+
         var chkInput = document.createElement("input");
         chkInput.type = 'checkbox';
         chkInput.checked = true;
+        chkInput.classList = 'chkVisibility'
 
         chkInput.addEventListener('change', (event) => togglevisibility(element));
-        
+
         var chkSpan = document.createElement("span");
         chkSpan.classList = 'checkmark';
 
         chkLabel.appendChild(chkInput);
         chkLabel.appendChild(chkSpan);
-        
+
         var action = document.createElement("a");
-        action.classList = "control-object-action";
+        action.classList = "control-object-action cursor-pointer animate__animated animate__bounceIn";
         action.textContent = formatName(element.name);
 
         wrapDiv.appendChild(chkLabel);
@@ -174,5 +175,6 @@ document.body.onload = function () {
             togglevisibility(event);
         })
     });
+
 }
 

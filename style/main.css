@@ -60,6 +60,10 @@ body {
     text-align: center;
 }
 
+.list-stlye-none {
+    list-style: none;
+}
+
 .wrap {
     z-index: 999;
 }
@@ -177,7 +181,6 @@ body {
 }
 
 #object-list {
-    list-style: none;
     column-count: 2;
     margin: 0;
 }
@@ -296,6 +299,10 @@ input[type="range"]::-webkit-slider-thumb:after {
 
 .chkwrap:hover input ~ .checkmark:after {
     /* display: block; */
+
+    animation-name: spin;
+    animation-duration: 100ms;
+    animation-timing-function: linear;
     border-color: rgba(255, 255, 255, 1);
 }
 
@@ -332,9 +339,18 @@ input[type="range"]::-webkit-slider-thumb:after {
     margin-bottom: 5px;
 }
 
-a.control-object-action {
+.control-object-action {
     text-transform: capitalize;
     font-size: 12px;
     padding: 2px 5px 0 5px;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
