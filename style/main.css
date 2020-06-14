@@ -287,6 +287,10 @@ input[type="range"]::-webkit-slider-thumb:after {
     border-radius: 100%;
 }
 
+.checkmark.active {
+    background: rgba(37, 196, 33, 1);
+    box-shadow: 0px 0px 3px rgba(37, 196, 33, 1);
+}
 /* On mouse-over, add a grey background color 
   .chkwrap:hover input ~ .checkmark {
     background-color: #ccc;
