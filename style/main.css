@@ -64,7 +64,11 @@ body {
     list-style: none;
 }
 
-.wrap {
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.z-top {
     z-index: 999;
 }
 
@@ -256,7 +260,7 @@ input[type="range"]::-webkit-slider-thumb:after {
 
 .chkwrap {
     position: relative;
-    padding-left: 35px;
+    padding-left: 15px;
     margin-bottom: 0px;
     cursor: pointer;
     font-size: 22px;
@@ -305,7 +309,7 @@ input[type="range"]::-webkit-slider-thumb:after {
     /* display: block; */
 
     animation-name: spin;
-    animation-duration: 100ms;
+    animation-duration: 200ms;
     animation-timing-function: linear;
     border-color: rgba(255, 255, 255, 1);
 }
@@ -346,8 +350,12 @@ input[type="range"]::-webkit-slider-thumb:after {
 .control-object-action {
     text-transform: capitalize;
     font-size: 12px;
-    padding: 2px 5px 0 5px;
+    padding: 1px 10px;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.control-object-action:hover{
+    font-weight: 600;
 }
 
 @keyframes spin {

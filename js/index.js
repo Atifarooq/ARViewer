@@ -144,6 +144,14 @@ function buildObjectList(ObjectList) {
         var action = document.createElement("a");
         action.classList = "control-object-action cursor-pointer animate__animated animate__bounceIn";
         action.textContent = name;
+        action.addEventListener('click', (event) => {
+            let item = [];
+            item.push(element);
+            selectedObject = item;
+            debugger;
+            showControlpanel();
+            setControlValues();
+        });
 
         wrapDiv.appendChild(chkLabel);
         wrapDiv.appendChild(action);
