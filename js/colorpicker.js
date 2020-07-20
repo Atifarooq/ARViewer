@@ -1,7 +1,7 @@
 
 var sliderPicker = new iro.ColorPicker(".colorPicker", {
     width: 250,
-    color: "#d93bbf",
+    color: "#D5A4BF",
     padding: 0,
     handleRadius:5,
     borderWidth: 0,
