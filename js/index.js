@@ -4,6 +4,7 @@ import controlColorPicker from "../js/colorpicker.js";
 let ObjectList = [];
 let viewerApi;
 let selectedObject;
+let rotation = 360;
 
 async function run(model) {
 
@@ -15,6 +16,8 @@ async function run(model) {
         console.log("API ready");
         try {
 
+
+            await viewerApi.rotateView([0, rotation]);
 
             document.body.addEventListener("click", async (event) => {
                 if (event.target.id && event.target.id == model) {
@@ -170,6 +173,9 @@ async function togglevisibility(obj) {
     console.dir(await viewerApi.getObjectsByName(obj.name));
 }
 
+async function flipObject() {
+    await viewerApi.rotateView([0, 360]);
+}
 
 document.body.onload = function () {
 
@@ -192,6 +198,7 @@ document.body.onload = function () {
         })
     });
 
+    document.querySelector('#btnFlip').addEventListener('click', flipObject);
 
     run('3e6302de-21c3-4ffe-8bea-41f42403ba00');
 }

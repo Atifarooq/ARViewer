@@ -12,18 +12,18 @@ var sliderPicker = new iro.ColorPicker(".colorPicker", {
                 sliderType: 'hue'
             }
         },
-        {
-            component: iro.ui.Slider,
-            options: {
-                sliderType: 'saturation'
-            }
-        },
-        {
-            component: iro.ui.Slider,
-            options: {
-                sliderType: 'value'
-            }
-        },
+        // {
+        //     component: iro.ui.Slider,
+        //     options: {
+        //         sliderType: 'saturation'
+        //     }
+        // },
+        // {
+        //     component: iro.ui.Slider,
+        //     options: {
+        //         sliderType: 'value'
+        //     }
+        // },
         // {
         //     component: iro.ui.Slider,
         //     options: {
@@ -46,18 +46,18 @@ var controlColorPicker = new iro.ColorPicker(".controlColorPicker", {
                 sliderType: 'hue'
             }
         },
-        {
-            component: iro.ui.Slider,
-            options: {
-                sliderType: 'saturation'
-            }
-        },
-        {
-            component: iro.ui.Slider,
-            options: {
-                sliderType: 'value'
-            }
-        },
+        // {
+        //     component: iro.ui.Slider,
+        //     options: {
+        //         sliderType: 'saturation'
+        //     }
+        // },
+        // {
+        //     component: iro.ui.Slider,
+        //     options: {
+        //         sliderType: 'value'
+        //     }
+        // },
         // {
         //     component: iro.ui.Slider,
         //     options: {

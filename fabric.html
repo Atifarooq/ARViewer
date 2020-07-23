@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/fabric.css">
     <title>Vectary Viewer</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -34,36 +35,53 @@
     <div class="container">
         <div class="row py-5 position-relative">
 
-            <div class="z-top position-absolute left top">
-                <section class="animate__animated animate__backInDown body-color-wrap">
-                    <div class="colorPicker"></div>
-                </section>
-                <section class="control-panel animate__animated animate__backInDown" style="display: none;">
+            <div class="z-top position-absolute left">
+                <section class="control-panel animate__animated animate__backInDown">
+                    <header>
+                        <h2>Customize <br />Fabric</h2>
+                        <small><i>Change fabric variations with button</i></small>
+                    </header>
+
+                    <hr style="margin-bottom: 15px;" /> 
+
+
+                    <div class="range-wrapper">
+                        <div class="range rangeM">
+                            <label for="roughness">FABRIC</label>
+                            <div class="radio-list">
+                                <div class="radio-button active" name="Fabric_Option_1">
+                                    <img name="Fabric_Option_1" src="img/red.PNG" width="20" />
+                                    <span name="Fabric_Option_1">RED</span>
+                                </div>
+                                <div class="radio-button" name="Fabric_Option_2">
+                                    <img name="Fabric_Option_2" src="img/blue.PNG" width="20" />
+                                    <span name="Fabric_Option_2">BLUE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="range-wrapper mb-35">
                         <div class="range rangeM">
-                            <label for="roughness">roughness</label>
-                            <input type="range" id="roughness" name="roughness" min="0" max="1" step="0.1"
-                                class="focused" value="0">
-                        </div>
-                        <div class="range rangeM">
-                            <label for="emissiveIntensity">emissive Intensity</label>
-                            <input type="range" id="emissiveIntensity" name="emissiveIntensity" step="0.1"
-                                class="focused" min="0" max="1" value="0">
-                        </div>
-                        <div class="range rangeM">
-                            <label for="metalness">metalness</label>
-                            <input type="range" id="metalness" name="metalness" min="0" max="1" step="0.1"
-                                class="focused" value="0">
-                        </div>
-                        <div class="range rangeM">
-                            <label for="opacity">opacity</label>
-                            <input type="range" id="opacity" name="opacity" min="0" max="1" step="0.1" class="focused"
-                                value="0">
+                            <label for="roughness">BUTTON</label>
+                            <div class="radio-list">
+                                <div class="radio-button" name="Bottone_3D_3">
+                                    <img name="Bottone_3D_3" src="img/plain.PNG" width="20" />
+                                    <span name="Bottone_3D_3">PLAIN</span>
+                                </div>
+                                <div class="radio-button" name="Bottone_3D_2">
+                                    <img name="Bottone_3D_2" src="img/lined.PNG" width="20" />
+                                    <span name="Bottone_3D_2">LINED</span>
+                                </div>
+                                <div class="radio-button active" name="Bottone_3D_1">
+                                    <img name="Bottone_3D_1" src="img/textured.PNG" width="20" />
+                                    <span name="Bottone_3D_1">TEXTURED</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-
-                    <div class="controlColorPicker"></div>
+                    
                 </section>
             </div>
 
@@ -75,20 +93,12 @@
                 </vctr-viewer>
 
             </div>
-
-            <div class="z-top position-absolute right top animate__animated animate__backInDown">
-                <section class="object-panel-wrapper">
-                    <ul id="object-list" class="list-stlye-none p-0 animate__animated animate__backInDown">
-                    </ul>
-                </section>
-            </div>
-
-            <button id="btnFlip">Flip Me</button>
+            
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/fabric.js"></script>
 
 </body>
 
