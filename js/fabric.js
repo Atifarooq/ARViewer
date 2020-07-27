@@ -46,25 +46,58 @@ document.body.onload = function () {
         item.addEventListener('click', (event) => {
             const name = event.target.getAttribute('name');
 
-            const elements = document.querySelectorAll('div[name^='+ name.substr(0, name.length - 1) +']')
-            for (let index = 0; index < elements.length; index++) {
-                const element = elements[index];
-                element.classList.remove("active");
-                if(name == element.getAttribute('name')) {
-                    element.classList.add("active");
+
+
+            if (name.substr(0, name.length - 1) == 'Fabric_Option_') {
+                const materialName = event.target.getAttribute('data-material');
+
+                const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
+                for (let index = 0; index < elements.length; index++) {
+                    const element = elements[index];
+                    element.classList.remove("active");
+                    if (materialName == element.getAttribute('data-material')) {
+                        element.classList.add("active");
+                    }
+                }
+
+                const obj = ObjectList.filter(obj => obj.material == materialName)[0];
+                togglevisibility(obj, true);
+                if (materialName == 'Fabric') {
+                    const obj = ObjectList.filter(obj => (obj.material == 'Fabric 2' || obj.name == 'Fabric Editable 2'));
+                    for (let index = 0; index < obj.length; index++) {
+                        const element = obj[index];
+                        togglevisibility(element, false);
+                    }
+                }
+                else if (materialName == 'Fabric 2') {
+                    const obj = ObjectList.filter(obj => (obj.material == 'Fabric' || obj.name == 'Fabric Editable 2'));
+                    for (let index = 0; index < obj.length; index++) {
+                        const element = obj[index];
+                        togglevisibility(element, false);
+                    }
+                }
+                else if (materialName == 'Fabric Editable 2') {
+                    const obj = ObjectList.filter(obj => (obj.material == 'Fabric' || obj.name == 'Fabric 2'));
+                    for (let index = 0; index < obj.length; index++) {
+                        const element = obj[index];
+                        togglevisibility(element, false);
+                    }
                 }
             }
 
-            const obj = ObjectList.filter(obj => obj.name == name)[0];
-            togglevisibility(obj, true);
-
-            if (name.substr(0, name.length - 1) == 'Fabric_Option_') {
-                let hiddName = name == 'Fabric_Option_2' ? 'Fabric_Option_1' : 'Fabric_Option_2';
-                const obj = ObjectList.filter(obj => obj.name == hiddName)[0];
-                togglevisibility(obj, false);
-            }
-
             if (name.substr(0, name.length - 1) == 'Bottone_3D_') {
+
+                const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
+                for (let index = 0; index < elements.length; index++) {
+                    const element = elements[index];
+                    element.classList.remove("active");
+                    if (name == element.getAttribute('name')) {
+                        element.classList.add("active");
+                    }
+                }
+
+                const obj = ObjectList.filter(obj => obj.name == name)[0];
+                togglevisibility(obj, true);
 
                 if (name == 'Bottone_3D_1') {
                     const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_2' || obj.name == 'Bottone_3D_3'));
