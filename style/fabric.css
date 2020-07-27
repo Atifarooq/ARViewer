@@ -23,6 +23,10 @@
     margin: 20px;
 }
 
+.sidenav {
+    background-color: rgba(0,0,0,0.01)
+}
+
 .sidenav-overlay {
     opacity: 0 !important;
 }
