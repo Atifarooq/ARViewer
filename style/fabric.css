@@ -15,9 +15,15 @@
 .col-3 {
     flex-grow: 3;
 } */
+.sidenav .subheader {
+    margin-top: 15px;
+}
 
 .radio-list {
     display: flex;
+    line-height: 1;
+    flex-direction: column;
+    padding: 0 32px;
 }
 
 .radio-button {
@@ -63,4 +69,8 @@
 } */
 .colorPicker-wrap {
     margin: 10px 0 20px 0;
+}
+
+.divider {
+    margin: 0 !important;
 }
