@@ -23,6 +23,10 @@
     margin: 20px;
 }
 
+.sidenav-overlay {
+    opacity: 0 !important;
+}
+
 .viewer-wrap {
     position: fixed;
     top: 0;
