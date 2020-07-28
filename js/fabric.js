@@ -3,6 +3,7 @@ import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
 
 let ObjectList = [];
 let viewerApi;
+let flip = 0; 
 
 async function run(model) {
 
@@ -48,10 +49,10 @@ document.body.onload = function () {
 
             if (name == 'Bottone_3D') {
                 const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
-                debugger;
                 for (let index = 0; index < obj.length; index++) {
                     const element = obj[index];
-                    await viewerApi.setRotationRelative(element.name, [0, 0, 180]);
+                    flip = flip == 0 ? 180 : (-1 * flip);
+                    await viewerApi.setRotationRelative(element.name, [0, 0, flip]);
                 }
             }
 
