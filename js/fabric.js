@@ -43,10 +43,17 @@ async function togglevisibility(obj, visiblity = true) {
 document.body.onload = function () {
 
     document.querySelectorAll('.radio-button').forEach(item => {
-        item.addEventListener('click', (event) => {
+        item.addEventListener('click', async (event) => {
             const name = event.target.getAttribute('name');
 
-
+            if (name == 'Bottone_3D') {
+                const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
+                debugger;
+                for (let index = 0; index < obj.length; index++) {
+                    const element = obj[index];
+                    await viewerApi.setRotationRelative(element.name, [0, 0, 180]);
+                }
+            }
 
             if (name.substr(0, name.length - 1) == 'Fabric_Option_') {
                 const materialName = event.target.getAttribute('data-material');
