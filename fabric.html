@@ -21,9 +21,10 @@
 </head>
 
 <body>
-    
-    <a href="#" data-target="slide-out" class="btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i class="material-icons">menu</i></a>
-              
+
+    <a href="#" data-target="slide-out" class="btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i
+            class="material-icons">menu</i></a>
+
     <ul id="slide-out" class="sidenav">
         <li>
             <div class="user-view">
@@ -32,7 +33,7 @@
                 </div>
                 <a href="#user"><img class="circle" src="img/odine.png"></a>
                 <a href="#name"><span class="white-text name">Odine Solutions</span></a>
-                <a href="#email"><span class="white-text email">contat@odinesolutions.com</span></a>
+                <a href="#email"><span class="white-text email">contact@odinesolutions.com</span></a>
             </div>
         </li>
         <li><a class="subheader">FABRIC</a></li>
@@ -91,20 +92,27 @@
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js"></script>
     <script type="module" src="js/fabric.js"></script>
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems);
-        });
 
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelector('.sidenav');
+            var instance = M.Sidenav.init(elems);
+            debugger;
+            instance.open();
+        });
         // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
         // var collapsibleElem = document.querySelector('.collapsible');
         // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
 
         // Or with jQuery
 
-        $(document).ready(function () {
-            $('.sidenav').sidenav();
-        });
+        // $(document).ready(function () {
+        //     $('.sidenav').sidenav();
+
+        //     setTimeout(() => {
+        //         $('.sidenav').sidenav('open');
+        //     }, 500);
+        // });
+
     </script>
 
 </body>
