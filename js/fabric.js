@@ -21,11 +21,13 @@ async function run(model) {
             ObjectList = allSceneObjects.filter(obj => obj.type == "mesh");
 
             allSceneObjects.forEach(async (obj) => {
-                if (obj.name == "Shadow_Plane")
-                    await togglevisibility(obj, false);
+                if (obj.name == "Fabric_OBJ_Red" || obj.name == "Bottone_3D_3") {
+                    await togglevisibility(obj, true);
+                }
                 else
-                    await viewerApi.setPositionAbsolute(obj.name, [0, 0, 0]);
+                    await togglevisibility(obj, false);
 
+                await viewerApi.setPositionAbsolute(obj.name, [0, 0, 0]);
             });
 
         } catch (e) {
