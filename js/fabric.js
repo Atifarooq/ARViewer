@@ -20,6 +20,13 @@ async function run(model) {
             const allSceneObjects = await viewerApi.getObjects();
             ObjectList = allSceneObjects.filter(obj => obj.type == "mesh");
 
+            allSceneObjects.forEach(async (obj) => {
+                if (obj.name == "Shadow_Plane")
+                    await togglevisibility(obj, false);
+                else
+                    await viewerApi.setPositionAbsolute(obj.name, [0, 0, 0]);
+
+            });
 
         } catch (e) {
             errHandler(e);
@@ -56,9 +63,7 @@ document.body.onload = function () {
                 }
             }
 
-            if (name.substr(0, name.length - 1) == 'Fabric_Option_') {
-                const materialName = event.target.getAttribute('data-material');
-
+            if (name.indexOf('Fabric_OBJ') > -1) {
                 // const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
                 // for (let index = 0; index < elements.length; index++) {
                 //     const element = elements[index];
@@ -68,10 +73,10 @@ document.body.onload = function () {
                 //     }
                 // }
 
-                const obj = ObjectList.filter(obj => (obj.material == 'Fabric' || obj.material == 'Fabric 2' || obj.material == 'Fabric Editable 2'));
+                const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
                 for (let index = 0; index < obj.length; index++) {
                     const element = obj[index];
-                    if (element.material == materialName)
+                    if (element.name == name)
                         await togglevisibility(element, true);
                     else
                         await togglevisibility(element, false);
