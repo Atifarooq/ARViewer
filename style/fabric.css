@@ -15,6 +15,11 @@
 .col-3 {
     flex-grow: 3;
 } */
+
+.sidenav {
+    background-color: rgba(255,255,255,0.5) !important;
+}
+
 .sidenav .subheader {
     margin-top: 15px;
 }
