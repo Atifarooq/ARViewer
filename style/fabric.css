@@ -17,19 +17,24 @@
 } */
 
 .sidenav {
-    background-color: rgba(255,255,255,0.5) !important;
+    display: flex;
+    height: auto !important;
+    width: 100% !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    position: static !important;
 }
 
-.sidenav .subheader {
-    margin-top: 15px;
+.control-head {    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .btn-floating {
-    margin: 20px;
-}
-
-.sidenav {
-    background-color: rgba(255,255,255,0.95);
+    margin: 13px 16px;
 }
 
 .sidenav-overlay {
@@ -57,18 +62,17 @@
 
 .radio-list label {
     margin-left: auto;
-    padding: 5px 15px;
 }
 
 .radio-button {
     display: flex;
-    padding: 5px 15px;
-    margin: 0;
+    padding: 5px 10px;
+    margin: 0 0 5px 0;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 1);
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
@@ -116,4 +120,13 @@
 
 [type="checkbox"].filled-in+span:not(.lever):after {
     border-radius: 50px !important;
+}
+
+.sidenav-trigger {
+    position: absolute !important;
+    right: 0 !important;
+}
+
+.sidenav .subheader {
+    font-size: 12px !important;
 }

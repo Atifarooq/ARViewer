@@ -4,6 +4,7 @@ import { VctrApi } from "https://www.vectary.com/viewer-api/v1/api.js";
 let ObjectList = [];
 let viewerApi;
 let flip = 0;
+let selectedFabric = null;
 
 async function run(model) {
 
@@ -23,6 +24,8 @@ async function run(model) {
             allSceneObjects.forEach(async (obj) => {
                 if (obj.name == "Fabric_OBJ_Red" || obj.name == "Bottone_3D_3") {
                     await togglevisibility(obj, true);
+                    if (obj.name == "Fabric_OBJ_Red")
+                        selectedFabric = obj;
                 }
                 else
                     await togglevisibility(obj, false);
@@ -50,62 +53,14 @@ async function togglevisibility(obj, visiblity = true) {
     await viewerApi.setVisibility(obj.name, obj.visible, false);
 }
 
+
 document.body.onload = function () {
 
-    document.querySelectorAll('.fabric_checkbox').forEach(item => {
-        item.addEventListener('click', async (event) => {
-            const name = event.target.getAttribute('data-name');
-
-            document.querySelectorAll('.fabric_checkbox').forEach(item => {
-                if (item.getAttribute('data-name') == name)
-                    item.checked = event.currentTarget.checked;
-                else item.checked = false;
-            });
-
-            const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
-            for (let index = 0; index < obj.length; index++) {
-                const element = obj[index];
-                if (element.name == name)
-                    await togglevisibility(element, event.currentTarget.checked);
-                else
-                    await togglevisibility(element, false);
-            }
-        })
-    });
-
-    document.querySelectorAll('.button_checkbox').forEach(item => {
-        item.addEventListener('click', async (event) => {
-            const name = event.target.getAttribute('data-name');
-
-            document.querySelectorAll('.button_checkbox').forEach(item => {
-                if (item.getAttribute('data-name') == name)
-                    item.checked = event.currentTarget.checked;
-                else item.checked = false;
-            });
-
-            const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_2' || obj.name == 'Bottone_3D_3'));
-            for (let index = 0; index < obj.length; index++) {
-                const element = obj[index];
-                if (element.name == name)
-                    await togglevisibility(element, event.currentTarget.checked);
-                else
-                    await togglevisibility(element, false);
-            }
-        })
-    });
 
     document.querySelectorAll('.radio-button').forEach(item => {
         item.addEventListener('click', async (event) => {
             const name = event.target.getAttribute('name');
             if (name) {
-                if (name == 'Bottone_3D') {
-                    const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
-                    for (let index = 0; index < obj.length; index++) {
-                        const element = obj[index];
-                        flip = flip == 0 ? 180 : (-1 * flip);
-                        await viewerApi.setRotationRelative(element.name, [0, 0, flip]);
-                    }
-                }
 
                 if (name.indexOf('Fabric_OBJ') > -1) {
                     // const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
@@ -120,15 +75,15 @@ document.body.onload = function () {
                     const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
                     for (let index = 0; index < obj.length; index++) {
                         const element = obj[index];
-                        document.querySelectorAll('.fabric_checkbox').forEach(item => {
-                            if (item.getAttribute('data-name') == name)
-                                item.checked = true;
-                            else item.checked = false;
-                        });
+
                         if (element.name == name) {
+                            selectedFabric = element;
+                            document.querySelector("div[name="+ element.name +"").classList.add("active");
+                            document.querySelector(".flip-fabric").checked = true;
                             await togglevisibility(element, true);
                         }
                         else {
+                            document.querySelector("div[name="+ element.name +"").classList.remove("active");
                             await togglevisibility(element, false);
                         }
                     }
@@ -173,6 +128,23 @@ document.body.onload = function () {
                 }
             }
         });
+    });
+
+    const flipCheckbox = document.querySelector(".flip-button");
+    flipCheckbox.addEventListener('click', async (event) => {
+        const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
+        for (let index = 0; index < obj.length; index++) {
+            const element = obj[index];
+            flip = flip == 0 ? 180 : (-1 * flip);
+            await viewerApi.setRotationRelative(element.name, [0, 0, flip]);
+        }
+    });
+
+
+    const flipFabricCheckbox = document.querySelector(".flip-fabric");
+    flipFabricCheckbox.addEventListener('click', async (event) => {
+        debugger;
+        await togglevisibility(selectedFabric, event.target.checked)
     });
 
 
