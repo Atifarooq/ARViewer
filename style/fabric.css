@@ -38,6 +38,11 @@
     height: 100%;
 }
 
+.radio-wrapper {
+    display: flex;
+    margin: 5px 15px 0 0;
+}
+
 .radio-list {
     display: flex;
     line-height: 1;
@@ -45,10 +50,15 @@
     padding: 0 32px;
 }
 
+.radio-list label {
+    margin-left: auto;
+    padding: 5px 15px;
+}
+
 .radio-button {
     display: flex;
     padding: 5px 15px;
-    margin: 5px 15px 0 0;
+    margin: 0;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 1);
@@ -92,4 +102,13 @@
 
 .divider {
     margin: 0 !important;
+}
+
+[type="checkbox"]+span:not(.lever) {
+    height: 18px !important;
+    padding-left: 12px !important;
+}
+
+[type="checkbox"].filled-in+span:not(.lever):after {
+    border-radius: 50px !important;
 }

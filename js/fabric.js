@@ -52,72 +52,123 @@ async function togglevisibility(obj, visiblity = true) {
 
 document.body.onload = function () {
 
+    document.querySelectorAll('.fabric_checkbox').forEach(item => {
+        item.addEventListener('click', async (event) => {
+            const name = event.target.getAttribute('data-name');
+
+            document.querySelectorAll('.fabric_checkbox').forEach(item => {
+                if (item.getAttribute('data-name') == name)
+                    item.checked = event.currentTarget.checked;
+                else item.checked = false;
+            });
+
+            const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
+            for (let index = 0; index < obj.length; index++) {
+                const element = obj[index];
+                if (element.name == name)
+                    await togglevisibility(element, event.currentTarget.checked);
+                else
+                    await togglevisibility(element, false);
+            }
+        })
+    });
+
+    document.querySelectorAll('.button_checkbox').forEach(item => {
+        item.addEventListener('click', async (event) => {
+            const name = event.target.getAttribute('data-name');
+
+            document.querySelectorAll('.button_checkbox').forEach(item => {
+                if (item.getAttribute('data-name') == name)
+                    item.checked = event.currentTarget.checked;
+                else item.checked = false;
+            });
+
+            const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_2' || obj.name == 'Bottone_3D_3'));
+            for (let index = 0; index < obj.length; index++) {
+                const element = obj[index];
+                if (element.name == name)
+                    await togglevisibility(element, event.currentTarget.checked);
+                else
+                    await togglevisibility(element, false);
+            }
+        })
+    });
+
     document.querySelectorAll('.radio-button').forEach(item => {
         item.addEventListener('click', async (event) => {
             const name = event.target.getAttribute('name');
-
-            if (name == 'Bottone_3D') {
-                const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
-                for (let index = 0; index < obj.length; index++) {
-                    const element = obj[index];
-                    flip = flip == 0 ? 180 : (-1 * flip);
-                    await viewerApi.setRotationRelative(element.name, [0, 0, flip]);
-                }
-            }
-
-            if (name.indexOf('Fabric_OBJ') > -1) {
-                // const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
-                // for (let index = 0; index < elements.length; index++) {
-                //     const element = elements[index];
-                //     element.classList.remove("active");
-                //     if (materialName == element.getAttribute('data-material')) {
-                //         element.classList.add("active");
-                //     }
-                // }
-
-                const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
-                for (let index = 0; index < obj.length; index++) {
-                    const element = obj[index];
-                    if (element.name == name)
-                        await togglevisibility(element, true);
-                    else
-                        await togglevisibility(element, false);
-                }
-            }
-
-            if (name.substr(0, name.length - 1) == 'Bottone_3D_') {
-
-                const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
-                for (let index = 0; index < elements.length; index++) {
-                    const element = elements[index];
-                    element.classList.remove("active");
-                    if (name == element.getAttribute('name')) {
-                        element.classList.add("active");
+            if (name) {
+                if (name == 'Bottone_3D') {
+                    const obj = ObjectList.filter(obj => (obj.name.indexOf('Bottone_3D') > -1));
+                    for (let index = 0; index < obj.length; index++) {
+                        const element = obj[index];
+                        flip = flip == 0 ? 180 : (-1 * flip);
+                        await viewerApi.setRotationRelative(element.name, [0, 0, flip]);
                     }
                 }
 
-                const obj = ObjectList.filter(obj => obj.name == name)[0];
-                await togglevisibility(obj, true);
+                if (name.indexOf('Fabric_OBJ') > -1) {
+                    // const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
+                    // for (let index = 0; index < elements.length; index++) {
+                    //     const element = elements[index];
+                    //     element.classList.remove("active");
+                    //     if (materialName == element.getAttribute('data-material')) {
+                    //         element.classList.add("active");
+                    //     }
+                    // }
 
-                if (name == 'Bottone_3D_1') {
-                    const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_2' || obj.name == 'Bottone_3D_3'));
+                    const obj = ObjectList.filter(obj => (obj.name == 'Fabric_OBJ_Red' || obj.name == 'Fabric_OBJ_Blue' || obj.name == 'Fabric_OBJ_Gray'));
                     for (let index = 0; index < obj.length; index++) {
                         const element = obj[index];
-                        await togglevisibility(element, false);
+                        document.querySelectorAll('.fabric_checkbox').forEach(item => {
+                            if (item.getAttribute('data-name') == name)
+                                item.checked = true;
+                            else item.checked = false;
+                        });
+                        if (element.name == name) {
+                            await togglevisibility(element, true);
+                        }
+                        else {
+                            await togglevisibility(element, false);
+                        }
                     }
                 }
-                else if (name == 'Bottone_3D_2') {
-                    const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_3'));
-                    for (let index = 0; index < obj.length; index++) {
-                        const element = obj[index];
-                        await togglevisibility(element, false);
+
+                if (name.substr(0, name.length - 1) == 'Bottone_3D_') {
+
+                    const elements = document.querySelectorAll('div[name^=' + name.substr(0, name.length - 1) + ']')
+                    for (let index = 0; index < elements.length; index++) {
+                        const element = elements[index];
+                        element.classList.remove("active");
+                        if (name == element.getAttribute('name')) {
+                            element.classList.add("active");
+                        }
                     }
-                }
-                else if (name == 'Bottone_3D_3') {
-                    const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_2'));
-                    for (let index = 0; index < obj.length; index++) {
-                        const element = obj[index];
-                        await togglevisibility(element, false);
+
+                    const obj = ObjectList.filter(obj => obj.name == name)[0];
+                    if (obj)
+                        await togglevisibility(obj, true);
+
+                    if (name == 'Bottone_3D_1') {
+                        const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_2' || obj.name == 'Bottone_3D_3'));
+                        for (let index = 0; index < obj.length; index++) {
+                            const element = obj[index];
+                            await togglevisibility(element, false);
+                        }
+                    }
+                    else if (name == 'Bottone_3D_2') {
+                        const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_3'));
+                        for (let index = 0; index < obj.length; index++) {
+                            const element = obj[index];
+                            await togglevisibility(element, false);
+                        }
+                    }
+                    else if (name == 'Bottone_3D_3') {
+                        const obj = ObjectList.filter(obj => (obj.name == 'Bottone_3D_1' || obj.name == 'Bottone_3D_2'));
+                        for (let index = 0; index < obj.length; index++) {
+                            const element = obj[index];
+                            await togglevisibility(element, false);
+                        }
                     }
                 }
             }
